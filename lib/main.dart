@@ -14,6 +14,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  redirection(String NomPage, function, context) {
+    return Center(
+      child: ElevatedButton(
+        child: Text(NomPage),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => function,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,45 +40,9 @@ class MyApp extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: ElevatedButton(
-              child: const Text('Quiz1'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QUiz1(),
-                  ),
-                );
-              },
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              child: const Text('Quiz2'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QUiz2(),
-                  ),
-                );
-              },
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              child: const Text('Quiz3'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QUiz3(),
-                  ),
-                );
-              },
-            ),
-          ),
+          redirection('Quiz1', QUiz1(), context),
+          redirection('Quiz2', QUiz2(), context),
+          redirection('Quiz3', QUiz3(), context),
         ],
       ),
     );
