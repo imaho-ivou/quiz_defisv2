@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_defis/view/Quiz1/Quiz1.dart';
-import 'package:quiz_defis/view/Quiz2/Quiz2.dart';
-import 'package:quiz_defis/view/Quiz3/Quiz3.dart';
+import 'package:quiz_defis/mainBrain.dart';
+
+MainBrain mainBrain = MainBrain();
 
 void main() {
   runApp(const MaterialApp(
@@ -14,22 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  redirection(String NomPage, function, context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text(NomPage),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => function,
-            ),
-          );
-        },
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +24,12 @@ class MyApp extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          redirection('Quiz1', QUiz1(), context),
-          redirection('Quiz2', QUiz2(), context),
-          redirection('Quiz3', QUiz3(), context),
+          mainBrain.Functionredirection(mainBrain.redirection[0].nomPage,
+              mainBrain.redirection[0].function, context),
+          mainBrain.Functionredirection(mainBrain.redirection[1].nomPage,
+              mainBrain.redirection[1].function, context),
+          mainBrain.Functionredirection(mainBrain.redirection[2].nomPage,
+              mainBrain.redirection[2].function, context),
         ],
       ),
     );
